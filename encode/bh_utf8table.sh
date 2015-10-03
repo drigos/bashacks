@@ -1,7 +1,7 @@
 bh_utf8table()
 {
-	echo -en \
-"Hex      Hex      Hex      Hex      Hex      Hex      Hex      Hex\n\
+	echo -en "\
+Hex      Hex      Hex      Hex      Hex      Hex      Hex      Hex\n\
 c2 a0    c2 ac ¬  c2 b8 ¸  c3 84 Ä  c3 90 Ð  c3 9c Ü  c3 a8 è  c3 b4 ô\n\
 c2 a1 ¡  c2 ad ­  c2 b9 ¹  c3 85 Å  c3 91 Ñ  c3 9d Ý  c3 a9 é  c3 b5 õ\n\
 c2 a2 ¢  c2 ae ®  c2 ba º  c3 86 Æ  c3 92 Ò  c3 9e Þ  c3 aa ê  c3 b6 ö\n\
