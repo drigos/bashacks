@@ -3,7 +3,7 @@ bh_str2hexr()
     [ $# -eq 0 ] && return 1
 
     case "$1" in
-	    "-x" | "-0x" | "-c" | "-s")
+	    "-x" | "-0" | "-c" | "-s")
 	        bh_str2hex $1 "$(echo "$2" | rev)"
 		;;
         *)

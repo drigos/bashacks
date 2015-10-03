@@ -1,17 +1,17 @@
 bh_str2hex()
 {
-    [ $# -eq 0 ] && return 1 
+    [ $# -eq 0 ] && return 1
 
 	case "$1" in
-		"-s") 
-			echo -n "$2" | hexdump -ve '/1 "%02x"' | sed 's/^/0x/' 
+		"-s")
+			echo -n "$2" | hexdump -ve '/1 "%02x"' | sed 's/^/0x/'
 			echo
 			;;
 		"-x")
 			echo -n "$2" | hexdump -ve '/1 "%02x"' | sed 's/../\\x&/g'
 			echo
 			;;
-		"-0x")
+		"-0")
 			echo -n "$2" | hexdump -ve '/1 "0x%02x "' | sed 's/\(.*\) /\1/'
 			echo
 			;;
