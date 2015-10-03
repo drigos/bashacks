@@ -6,7 +6,7 @@ bh_hex2bin()
 	local i
 
 	for i in $*; do
-		bin=$(echo "obase=2;ibase=16;$(echo $i | tr a-f A-F)" | bc)
+		bin=$(echo "obase=2;ibase=16;$(echo ${i#0x} | tr a-f A-F)" | bc)
 		echo -n "$bin "
     done
 	echo
