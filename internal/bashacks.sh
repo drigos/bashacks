@@ -53,7 +53,8 @@ bh_urlencode\n\
 bh_urldecode\n\
 bh_caesaren\n\
 bh_caesarde\n\
-bh_atbash\n"
+bh_atbash\n\
+bh_a1z26en\n"
                     ;;
                 "4" | "crypto")
                     echo -en "
