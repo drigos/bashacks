@@ -1,4 +1,4 @@
 bashacks()
 {
-    echo "use -> man bashacks" 
+    echo "use -> man bashacks"
 }
