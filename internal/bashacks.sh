@@ -50,7 +50,10 @@ bh_bcdtable\n\
 bh_xs3table\n\
 bh_unbase64\n\
 bh_urlencode\n\
-bh_urldecode\n"
+bh_urldecode\n\
+bh_caesaren\n\
+bh_caesarde\n\
+bh_atbash\n"
                     ;;
                 "4" | "crypto")
                     echo -en "
