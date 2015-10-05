@@ -1,12 +1,13 @@
-bh_isascii() {
-   local c2d=$(bh_asc2dec "1")
+bh_isascii()
+{
+    [ $# -ne 1 ] && return 1
 
-   if $(bh_isdigit $c2d)
-   then
-      [ $c2d -lt 127 \
-         -a $c2d -gt 0 ] &&
-         return 0 ||
-         return 1
-   fi
-   return 1
+    # for i in $(bh_str2hex -0 "$1"); do
+    #     [ $((${i})) -ge 0 -a $((${i})) -le 127 ] || return 1
+    # done
+    #
+    # return 0
+
+    echo "$1" | grep -Pqw '^[\x00-\x7F]+$' 2> /dev/null
+    # echo "$1" | grep -Eqw '^[[:cntrl:][:print:]]+$'
 }
