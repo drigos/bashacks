@@ -1,6 +1,7 @@
-bh_iscntrl() {
-    local iCHAR=$(bh_asc2dec "$1")
-    [ $iCHAR -le 31 -o \
-        $iCHAR -eq 127 ] && return 0 ||
-            return 1
+bh_iscntrl()
+{
+    [ $# -ne 1 ] && return 1
+
+    echo "$1" | grep -Pqw '^[\x00-\x1F\x7F]+$'
+    # echo "$1" | grep -Eqw '^[[:cntrl:]]+$'
 }
