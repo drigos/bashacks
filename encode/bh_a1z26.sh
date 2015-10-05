@@ -5,21 +5,19 @@ bh_a1z26en()
     local size=$((${#1}-1))
     local hyphen=""
 
-    for i in $(seq 0 ${size}); do
-        char=$(printf "%d\n" "'${1:$i:1}")
-
-        if [ ${char} -ge 65 -a ${char} -le 90 ]
+    for i in $(bh_str2hex -0 "$1"); do
+        if [ $((${i})) -ge 65 -a $((${i})) -le 90 ]
         then
             [ $hyphen ] && echo -n "-"
-            echo -n $((${char} - 64))
+            echo -n $((${i} - 0x40))
             hyphen="1"
-        elif [ ${char} -ge 97 -a ${char} -le 122 ]
+        elif [ $((${i})) -ge 97 -a $((${i})) -le 122 ]
         then
             [ $hyphen ] && echo -n "-"
-            echo -n $((${char} - 96))
+            echo -n $((${i} - 0x60))
             hyphen="1"
         else
-            echo -n "${1:$i:1}"
+            echo -en ${i/0/\\}
             hyphen=""
         fi
     done
