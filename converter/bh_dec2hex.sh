@@ -1,6 +1,10 @@
 bh_dec2hex()
 {
-    [ $# -eq 0 ] && return 1
+    [ ${#} -eq 0 ] && return 1
 
-    printf "%x\n" "$1"
+	for i in ${*}; do
+        printf "%X " "${i}"
+    done
+
+	echo
 }
