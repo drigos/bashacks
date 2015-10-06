@@ -1,8 +1,6 @@
 bh_a1z26en()
 {
     [ $# -ne 1 ] && return 1
-
-    local size=$((${#1}-1))
     local hyphen=""
 
     for i in $(bh_str2hex -0 "$1"); do
