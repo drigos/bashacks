@@ -1,15 +1,19 @@
-SRC = $(shell find '.' -type f -name '*.sh')
+INFILES = $(shell find '.' -type f -name '*.sh')
 OUTFILE = bashacks.sh
+EXECDIR = /opt
+
+MANFILE = $(basename $(OUTFILE)).1
+MANDIR = $(shell echo $(echo $MANPATH | cut -d \: -f1)/man1)
+
 STLANGUAGE = $(shell echo $LANG | cut -d \. -f1) 
-MANDIR = /usr/share/man/man1
 BAHSRCFILE = /etc/bash.bashrc
 
-all:
-	for file in $(SRC); do \
-		cat $$file >> $(OUTFILE); \
-		echo >> $(OUTFILE); \
-	done
+.DELETE_ON_ERROR:
+.PHONY: all
+all: clean
+	@cat $(INFILES) >> $(OUTFILE)
 
+.PHONY: install
 install:
 
 ifeq ("$(wildcard $(OUTFILE))","")
@@ -17,16 +21,21 @@ ifeq ("$(wildcard $(OUTFILE))","")
 endif	
 
 ifeq ($(STLANGUAGE), pt_BR)
-	install man/pt_BR/bashacks.1 $(MANDIR)
+	@install man/pt_BR/$(MANFILE) $(MANDIR)
 else
-	install man/en/bashacks.1 $(MANDIR)
+	@install man/en/$(MANFILE) $(MANDIR)
 endif
 
-	echo 'source $(shell pwd)/$(OUTFILE)' >> $(BAHSRCFILE)
+	@cp $(OUTFILE) $(EXECDIR)
+	@sed -i "/source $(shell echo $(EXECDIR) | sed 's@\/@\\/@g')\/$(OUTFILE)/d" $(BAHSRCFILE)
+	@echo -e 'source $(EXECDIR)/$(OUTFILE)' >> $(BAHSRCFILE)
 	
+.PHONY: clean
 clean:
-	rm -f bashacks.sh
+	@rm -f $(OUTFILE)
 
+.PHONY: uninstall
 uninstall:
-	rm -f /usr/share/man/man1/bashacks.1
-	sed -i '/source $(shell pwd | sed 's/\//\\\//g')\/$(OUTFILE)/d' $(BAHSRCFILE)
+	@rm -f $(MANDIR)/$(MANFILE)
+	@rm -f $(EXECDIR)/$(OUTFILE)
+	@sed -i "/source $(shell echo $(EXECDIR) | sed 's@\/@\\/@g')\/$(OUTFILE)/d" $(BAHSRCFILE)
