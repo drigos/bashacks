@@ -11,5 +11,3 @@ bh_rotall()
 
 alias bh_rot5='bh_rot 5'
 alias bh_rot13='bh_rot 13'
-alias bh_rot18='bh_rot 18'
-alias bh_rot47='bh_rot 47'

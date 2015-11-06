@@ -1,4 +1,4 @@
-bh_a1z26en()
+bh_a1z26()
 {
     [ ${#} -ne 1 ] && return 1
 
