@@ -74,9 +74,6 @@ bashacks \- functions to hack with bash
 [\fB\-txt\fR|\fB\-zip\fR|\fB\-exe\fR|\fB\-msi\fR]
 [\fIdirectory\fR]
 .PP
-.B bh_get
-.IR absolute\-url
-.PP
 .B bh_hashes
 .IR filename ...
 .PP
@@ -232,6 +229,9 @@ bashacks \- functions to hack with bash
 \fB\-t\fR \fIfree\fR
 \fB\-s\fR \fIstring\fR
 .PP
+.B bh_wget
+.IR absolute\-url
+.PP
 .B bh_wgetr
 .IR url
 .PP
@@ -313,9 +313,6 @@ Create file on disk with content of process memory
 .TP
 .B bh_findmime
 Find file by mime type (e.g. exe, msi, txt, zip)
-.TP
-.B bh_get
-Get a URL page continuous mode (only one page)
 .TP
 .B bh_hashes
 Generate hash all files informed
@@ -451,6 +448,9 @@ Show UTF8 table
 .TP
 .B bh_websearch
 Use google base to extract information
+.TP
+.B bh_wget
+Get a URL page continuous mode (only one page)
 .TP
 .B bh_wgetr
 Get a URL page recursive and continuous mode.
@@ -796,18 +796,6 @@ Makefile
 README.md
 $ bh_findmime \-exe ~/Downloads
 /home/bashacks/Downloads//putty.exe
-$
-.RE
-.fi
-.PP
-Download absolute URL page in continuos mode:
-.PP
-.nf
-.RS 4
-$ bh_get http://www.mentebinaria.com.br/artigos/0x1f/0x1f\-maqengrevlnx.html
-\-\-passage omitted\-\-
-$ ls \-1
-0x1f\-maqengrevlnx.html
 $
 .RE
 .fi
@@ -1460,6 +1448,18 @@ XXX@XXX.com.br
 XeX@XXX.com.br
 XXX@XXX.com.br
 joXXXXXXXXXX@XXX.com.br
+$
+.RE
+.fi
+.PP
+Download absolute URL page in continuos mode:
+.PP
+.nf
+.RS 4
+$ bh_wget http://www.mentebinaria.com.br/artigos/0x1f/0x1f\-maqengrevlnx.html
+\-\-passage omitted\-\-
+$ ls \-1
+0x1f\-maqengrevlnx.html
 $
 .RE
 .fi
