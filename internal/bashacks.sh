@@ -48,19 +48,22 @@ bh_asciitable\n\
 bh_utf8table\n\
 bh_bcdtable\n\
 bh_xs3table\n\
+bh_base64\n\
 bh_unbase64\n\
 bh_urlencode\n\
 bh_urldecode\n\
 bh_caesaren\n\
 bh_caesarde\n\
 bh_atbash\n\
-bh_a1z26en\n"
+bh_a1z26\n"
                     ;;
                 "4" | "crypto")
                     echo -en "
 CRYPTO\n\
 bh_rotall\n\
 bh_rot\n\
+bh_rot5\n\
+bh_rot13\n\
 bh_strxor\n"
                     ;;
                 "5" | "hash")
@@ -110,9 +113,8 @@ bh_wscan\n"
                 "10" | "www")
                     echo -en "
 WWW\n\
-bh_dlsite\n\
-bh_wgetr\n\
-bh_get\n"
+bh_wget\n\
+bh_wgetr\n"
                     ;;
                 "11" | "social")
                     echo -en "
